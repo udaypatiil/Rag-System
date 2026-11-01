@@ -13,6 +13,9 @@ directory = 'My Documents'
 llm = ChatGoogleGenerativeAI(
     model='gemini-3-flash-preview'
 )
+
+# Load pdf data
+
 pdf_loader = PyPDFDirectoryLoader(directory)
 pdf_docs = pdf_loader.load()
 # Load text documents
@@ -26,3 +29,6 @@ text_docs = text_loder.load()
 
 docs = pdf_docs + text_docs
 
+# Add user query
+
+user_query = input("Enter your query:-")
