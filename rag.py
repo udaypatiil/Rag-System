@@ -13,4 +13,16 @@ directory = 'My Documents'
 llm = ChatGoogleGenerativeAI(
     model='gemini-3-flash-preview'
 )
+pdf_loader = PyPDFDirectoryLoader(directory)
+pdf_docs = pdf_loader.load()
+# Load text documents
+text_loder = DirectoryLoader(
+    directory,
+    glob='**/*.txt',
+    loader_cls=TextLoader
+)
+
+text_docs = text_loder.load()
+
+docs = pdf_docs + text_docs
 
