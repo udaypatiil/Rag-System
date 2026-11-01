@@ -10,8 +10,7 @@ load_dotenv()
 
 directory = 'My Documents'
 
-load_dotenv()
-
 llm = ChatGoogleGenerativeAI(
     model='gemini-3-flash-preview'
 )
+
