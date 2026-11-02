@@ -52,3 +52,21 @@ retrieved_docs = vector_store.similarity_search(
 context = '\n'.join(
     doc.page_content for doc in retrieved_docs
 )
+#Implement RAG question answering
+system_prompt = f"""You are a helpful assistant.
+Answer questions using only the following context:
+
+{context}
+
+If the answer is not available in the context,
+clearly say that you could not find the answer.
+"""
+
+messages = [
+    SystemMessage(content=system_prompt),
+    HumanMessage(content=user_query)
+]
+
+response = llm.invoke(messages)
+
+print(response.text)
