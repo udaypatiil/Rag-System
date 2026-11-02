@@ -32,3 +32,12 @@ docs = pdf_docs + text_docs
 # Add user query
 
 user_query = input("Enter your query:-")
+
+# Implement embeddings and vector store
+embeddings = HuggingFaceEmbeddings(
+    model_name='sentence-transformers/all-miniLM-L6-v2'
+)
+
+vector_store = InMemoryVectorStore(embeddings)
+
+vector_store.add_documents(docs)
