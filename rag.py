@@ -41,3 +41,14 @@ embeddings = HuggingFaceEmbeddings(
 vector_store = InMemoryVectorStore(embeddings)
 
 vector_store.add_documents(docs)
+
+
+# Implement similarity search and context retrieval
+retrieved_docs = vector_store.similarity_search(
+    user_query,
+    k=5
+)
+
+context = '\n'.join(
+    doc.page_content for doc in retrieved_docs
+)
